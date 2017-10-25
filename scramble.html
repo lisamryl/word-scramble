@@ -5,12 +5,24 @@
 </head>
 <body>
     <h1>A JavaScript Word Scramble Game</h1>
+    <script src="scramble-helper.js"></script>
 
     <script>
         const WORDS     = ["booger", "apple", "hackbright", "mango"];
 
         // create an array of scrambled words
+
+        let scrambledWords = scrambleWords(WORDS);
+
+
         // create a map of scrambled words
+
+        let scrambledWordMap = new Map ();
+
+        for (let i=0; i < WORDS.length; i += 1) {
+
+            scrambledWordMap.set(WORDS[i], scrambledWords[i]);
+        }
 
         let playing = true;
 
@@ -18,24 +30,42 @@
 
             // Select a scrambled word from your array. 
 
+// .get looks for key, returns value
+            let randWord = getRandomScramble(scrambledWordMap);
+            let randScramble = scrambledWordMap.get(randWord);
+
             // Use `alert()` to show the user the scrambled word.
+
+            alert(randScramble + ' is your random word!')
 
             // Use `prompt()` to get the user's guess.
 
+            let userGuess = prompt("What word do you think that was?")
+
+
             // Compare the guess to the original, unscrambled word. 
+            
+            if (randWord === userGuess) {
+                alert("Congrats, " + userGuess + " is the correct word!");
+            } else { alert("Sucks to suck, Bro!"); 
+            }
+
+
             // If the user got it right, congratulate them, if not tell them so.
 
-#. `prompt()` takes arguments. Find out what they are and see if you can combine
-   the `alert()` and `prompt()` from the last two steps.
+// #. `prompt()` takes arguments. Find out what they are and see if you can combine
+//    the `alert()` and `prompt()` from the last two steps.
 
-#. Compare the guess to the original, unscrambled word. Did they get it right? If
-   so, congratulate them!
+// #. Compare the guess to the original, unscrambled word. Did they get it right? If
+//    so, congratulate them!
 
             playing = confirm("Press OK to keep playing or Cancel to quit.");
         }
 
         alert("Goodbye!");
     </script>
+
+
 
 </body>
 </html>
