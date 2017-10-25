@@ -22,9 +22,12 @@ let reversedWords = function (wordArrays) {
 //curly brace for function, semi colon is for let =
  };
 
-// We never finished these functions. Redo them. Correct ones are at the bottom
+// s
 // Create a function that returns a random word from an array
-
+let randomWord = function(wordArray) {
+    let randWordIndex = Math.floor(Math.random() * wordArray.size);
+    return wordArray[randWordIndex];
+};
 
 
 // Create an array of words and save it to a variable. Using your functions create
